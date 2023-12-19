@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+</head>
+<body>
+<span>输入账号 :</span>
+<input id="name" name="name" onkeyup="check()" type="text">
+<span id="checkResult"></span>
+
+
+
+
+
+
+</body>
+<script>
+  var xmlhttp;
+  function check() {
+    var name = document.getElementById("name").value;
+    var url = " http://localhost:8080/Online_Library_System_master_Web_exploded/NewFile.jsp?name=" + name;
+
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = checkResult; //响应函数
+    xmlhttp.open("GET", url, true); //设置访问的页面
+    xmlhttp.send(null); //执行访问
+  }
+
+  function checkResult() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+      document.getElementById('checkResult').innerHTML = xmlhttp.responseText;
+
+  }
+</script>
+</html>
+
